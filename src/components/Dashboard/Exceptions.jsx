@@ -10,8 +10,9 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Switch from '@material-ui/core/Switch';
 import { green } from '@material-ui/core/colors';
-import { Input, Link, TextField } from '@material-ui/core';
+import { InputBase, Link, TextField } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search';
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -19,6 +20,13 @@ const useStyles = makeStyles({
   },
   warp:{
     marginBottom:'30px'
+  },
+  searchBar:{
+      border:'1px solid #c9c9c9',
+      borderRadius:'5px',
+      padding:'2px 8px',
+      minWidth:'300px'
+
   },
   titleWrap:{
       display:'flex',
@@ -88,51 +96,70 @@ export default function Exceptions() {
   const classes = useStyles();
   return (
     <>
-    <div className={classes.titleWrap}>
+      <div className={classes.titleWrap}>
         <div>
-        <Typography variant="h5">Exceptions</Typography>
-    <Typography variant="paragraph">Note: In order to edit User's individual privileges, please click on the user</Typography>
+          <Typography variant="h5">Exceptions</Typography>
+          <Typography variant="paragraph">
+            Note: In order to edit User's individual privileges, please click on
+            the user
+          </Typography>
         </div>
         <div>
-        <TextField id="outlined-basic" label="Search" variant="outlined" />
+          <InputBase
+            endAdornment={<SearchIcon />}
+            className={classes.searchBar}
+            placeholder="Find a user here"
+          />
         </div>
-    </div>
- 
-    <TableContainer className={classes.wrap} component={Paper}>
-      <Table className={classes.table} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Role</TableCell>
-            <TableCell align="right">Growth Drives</TableCell>
-            <TableCell align="right">Price Metrics</TableCell>
-            <TableCell align="right">Profit Analytics</TableCell>
-            <TableCell align="right">Money Makers</TableCell>
-            <TableCell align="right">Loss Makers</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-            <div className="test">
-            <Link href="#" onClick={e=>e.preventDefault()}>
-   +Add Role
-  </Link>
-            </div>
-          {rows.map((row) => (
-            <TableRow key={row.name}>
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <ThemeProvider theme={outerTheme}>
-                <TableCell align="right"><Switch className="switchColor"/></TableCell>
-                <TableCell align="right"><Switch/></TableCell>
-                <TableCell align="right"><Switch/></TableCell>
-                <TableCell align="right"><Switch/></TableCell>
-                <TableCell align="right"><Switch/></TableCell>
-              </ThemeProvider>
+      </div>
+
+      <TableContainer className={classes.wrap} component={Paper}>
+        <Table className={classes.table} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Role</TableCell>
+              <TableCell align="right">Growth Drives</TableCell>
+              <TableCell align="right">Price Metrics</TableCell>
+              <TableCell align="right">Profit Analytics</TableCell>
+              <TableCell align="right">Money Makers</TableCell>
+              <TableCell align="right">Loss Makers</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+              <TableRow>
+            <TableCell style={{borderBottom:"none"}}>
+              <Link href="#" onClick={(e) => e.preventDefault()}>
+                +Add Role
+              </Link>
+            </TableCell>
+            </TableRow>
+            {rows.map((row) => (
+              <TableRow key={row.name}>
+                <TableCell component="th" scope="row">
+                  {row.name}
+                </TableCell>
+                <ThemeProvider theme={outerTheme}>
+                  <TableCell align="right">
+                    <Switch className="switchColor" />
+                  </TableCell>
+                  <TableCell align="right">
+                    <Switch />
+                  </TableCell>
+                  <TableCell align="right">
+                    <Switch />
+                  </TableCell>
+                  <TableCell align="right">
+                    <Switch />
+                  </TableCell>
+                  <TableCell align="right">
+                    <Switch />
+                  </TableCell>
+                </ThemeProvider>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </>
   );
 }

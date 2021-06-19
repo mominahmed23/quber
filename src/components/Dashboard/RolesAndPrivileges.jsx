@@ -95,11 +95,13 @@ export default function RolesAndPrivileges() {
           </TableRow>
         </TableHead>
         <TableBody>
-            <div className="test">
-            <Link href="#" onClick={e=>e.preventDefault()}>
-   +Add Role
-  </Link>
-            </div>
+        <TableRow>
+            <TableCell style={{borderBottom:"none"}}>
+              <Link href="#" onClick={(e) => e.preventDefault()}>
+                +Add Role
+              </Link>
+            </TableCell>
+            </TableRow>
           {rows.map((row) => (
             <TableRow key={row.name}>
               <TableCell component="th" scope="row">
