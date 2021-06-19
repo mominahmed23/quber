@@ -15,9 +15,15 @@ import { Typography } from '@material-ui/core';
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
+    border:'1px solid #e1e1e1'
   },
   wrap:{
-    marginBottom:'30px'
+    marginBottom:'30px',
+    border:'1px solid #e1e1e1',
+    padding:'20px'
+  },
+  column:{
+    border:'1px solid #e1e1e1'
   }
 });
 const outerTheme = createMuiTheme({
@@ -86,17 +92,17 @@ export default function RolesAndPrivileges() {
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Role</TableCell>
-            <TableCell align="right">Growth Drives</TableCell>
-            <TableCell align="right">Price Metrics</TableCell>
-            <TableCell align="right">Profit Analytics</TableCell>
-            <TableCell align="right">Money Makers</TableCell>
-            <TableCell align="right">Loss Makers</TableCell>
+            <TableCell className={classes.column}>Role</TableCell>
+            <TableCell className={classes.column} align="right">Growth Drives</TableCell>
+            <TableCell className={classes.column} align="right">Price Metrics</TableCell>
+            <TableCell className={classes.column} align="right">Profit Analytics</TableCell>
+            <TableCell className={classes.column} align="right">Money Makers</TableCell>
+            <TableCell className={classes.column} align="right">Loss Makers</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
         <TableRow>
-            <TableCell style={{borderBottom:"none"}}>
+            <TableCell className={classes.column} style={{borderRight:"none"}}>
               <Link href="#" onClick={(e) => e.preventDefault()}>
                 +Add Role
               </Link>
@@ -104,15 +110,15 @@ export default function RolesAndPrivileges() {
             </TableRow>
           {rows.map((row) => (
             <TableRow key={row.name}>
-              <TableCell component="th" scope="row">
+              <TableCell className={classes.column} component="th" scope="row">
                 {row.name}
               </TableCell>
               <ThemeProvider theme={outerTheme}>
-                <TableCell align="right"><Switch className="switchColor"/></TableCell>
-                <TableCell align="right"><Switch/></TableCell>
-                <TableCell align="right"><Switch/></TableCell>
-                <TableCell align="right"><Switch/></TableCell>
-                <TableCell align="right"><Switch/></TableCell>
+                <TableCell className={classes.column} align="right"><Switch className="switchColor"/></TableCell>
+                <TableCell className={classes.column} align="right"><Switch/></TableCell>
+                <TableCell className={classes.column} align="right"><Switch/></TableCell>
+                <TableCell className={classes.column} align="right"><Switch/></TableCell>
+                <TableCell className={classes.column} align="right"><Switch/></TableCell>
               </ThemeProvider>
             </TableRow>
           ))}

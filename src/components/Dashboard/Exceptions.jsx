@@ -16,10 +16,15 @@ import SearchIcon from '@material-ui/icons/Search';
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
-    
+    border:'1px solid #e1e1e1'
   },
-  warp:{
-    marginBottom:'30px'
+  wrap:{
+    marginBottom:'30px',
+    border:'1px solid #e1e1e1',
+    padding:'20px'
+  },
+  column:{
+    border:'1px solid #e1e1e1'
   },
   searchBar:{
       border:'1px solid #c9c9c9',
@@ -123,18 +128,18 @@ export default function Exceptions() {
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
-            <TableCell>User</TableCell>
-              <TableCell>Role</TableCell>
-              <TableCell align="right">Growth Drives</TableCell>
-              <TableCell align="right">Price Metrics</TableCell>
-              <TableCell align="right">Profit Analytics</TableCell>
-              <TableCell align="right">Money Makers</TableCell>
-              <TableCell align="right">Loss Makers</TableCell>
+            <TableCell className={classes.column}>User</TableCell>
+            <TableCell className={classes.column}>Role</TableCell>
+            <TableCell className={classes.column} align="right">Growth Drives</TableCell>
+            <TableCell className={classes.column} align="right">Price Metrics</TableCell>
+            <TableCell className={classes.column} align="right">Profit Analytics</TableCell>
+            <TableCell className={classes.column} align="right">Money Makers</TableCell>
+            <TableCell className={classes.column} align="right">Loss Makers</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
               <TableRow>
-            <TableCell style={{borderBottom:"none"}}>
+            <TableCell className={classes.column} style={{borderRight:"none"}}>
               <Link href="#" onClick={(e) => e.preventDefault()}>
                 +Add User
               </Link>
@@ -142,28 +147,18 @@ export default function Exceptions() {
             </TableRow>
             {rows.map((row) => (
               <TableRow key={row.name}>
-                 <TableCell component="th" scope="row">
+                 <TableCell className={classes.column} component="th" scope="row">
                   {row.user}
                 </TableCell>
-                <TableCell component="th" scope="row">
-                  {row.name}
-                </TableCell>
+                <TableCell className={classes.column} component="th" scope="row">
+                {row.name}
+              </TableCell>
                 <ThemeProvider theme={outerTheme}>
-                  <TableCell align="right">
-                    <Switch className="switchColor" />
-                  </TableCell>
-                  <TableCell align="right">
-                    <Switch />
-                  </TableCell>
-                  <TableCell align="right">
-                    <Switch />
-                  </TableCell>
-                  <TableCell align="right">
-                    <Switch />
-                  </TableCell>
-                  <TableCell align="right">
-                    <Switch />
-                  </TableCell>
+                <TableCell className={classes.column} align="right"><Switch className="switchColor"/></TableCell>
+                <TableCell className={classes.column} align="right"><Switch/></TableCell>
+                <TableCell className={classes.column} align="right"><Switch/></TableCell>
+                <TableCell className={classes.column} align="right"><Switch/></TableCell>
+                <TableCell className={classes.column} align="right"><Switch/></TableCell>
                 </ThemeProvider>
               </TableRow>
             ))}
