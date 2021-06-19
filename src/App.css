@@ -27,7 +27,16 @@
 .App-link {
   color: #61dafb;
 }
-
+.MuiTableCell-root {
+  padding: 3px !important;
+}
+.hover-container {
+  text-align: center;
+  margin-bottom: 2em;
+}
+.link {
+  color:#0088E8
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
