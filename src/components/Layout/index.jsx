@@ -12,7 +12,8 @@ const useStyles = makeStyles((theme) => ({
       mainContent:{
         marginLeft: '240px',
         padding: '20px',
-        marginBottom: '20px'
+        marginBottom: '40px',
+        flexGrow:1
       },
       drawerHeader: {
         display: 'flex',

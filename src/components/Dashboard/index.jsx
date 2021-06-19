@@ -1,12 +1,14 @@
 import React from "react";
-import { Typography } from "@material-ui/core";
-import BasicTable from "./BasicTable";
+import Exceptions from "./Exceptions";
+import RolesAndPrivileges from "./RolesAndPrivileges";
 
 const Dashboard = () => {
   return (
     <div>
-      <Typography variant="h4">Hello world</Typography>
-        <BasicTable/>
+    
+        <RolesAndPrivileges/>
+        <Exceptions/>
+        
     </div>
   );
 };

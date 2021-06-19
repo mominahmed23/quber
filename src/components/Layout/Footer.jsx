@@ -13,7 +13,8 @@ const Footer = () => {
         zIndex: 1200,
         position: 'fixed',
         textAlign: 'center',
-        padding: '8px 0px'
+        padding: '8px 0px',
+        backgroundColor: '#ffffff'
       };
     return (
         <footer className="MuiPaper-elevation4" style={footerStyles}>

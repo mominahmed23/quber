@@ -10,10 +10,22 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Switch from '@material-ui/core/Switch';
 import { green } from '@material-ui/core/colors';
+import { Input, Link, TextField } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
+    
   },
+  warp:{
+    marginBottom:'30px'
+  },
+  titleWrap:{
+      display:'flex',
+      justifyContent:'space-between',
+      alignItems:'center',
+      marginBottom:'20px'
+  }
 });
 const outerTheme = createMuiTheme({
     palette: {
@@ -72,10 +84,21 @@ const rows = [
         key5:5,
     },
 ];
-export default function BasicTable() {
+export default function Exceptions() {
   const classes = useStyles();
   return (
-    <TableContainer component={Paper}>
+    <>
+    <div className={classes.titleWrap}>
+        <div>
+        <Typography variant="h5">Exceptions</Typography>
+    <Typography variant="paragraph">Note: In order to edit User's individual privileges, please click on the user</Typography>
+        </div>
+        <div>
+        <TextField id="outlined-basic" label="Search" variant="outlined" />
+        </div>
+    </div>
+ 
+    <TableContainer className={classes.wrap} component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -89,7 +112,9 @@ export default function BasicTable() {
         </TableHead>
         <TableBody>
             <div className="test">
-            <p>hi</p>
+            <Link href="#" onClick={e=>e.preventDefault()}>
+   +Add Role
+  </Link>
             </div>
           {rows.map((row) => (
             <TableRow key={row.name}>
@@ -108,5 +133,6 @@ export default function BasicTable() {
         </TableBody>
       </Table>
     </TableContainer>
+    </>
   );
 }
