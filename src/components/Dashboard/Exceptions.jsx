@@ -10,7 +10,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Switch from '@material-ui/core/Switch';
 import { green } from '@material-ui/core/colors';
-import { InputBase, Link, TextField } from '@material-ui/core';
+import { InputBase, Link } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 const useStyles = makeStyles({
@@ -45,6 +45,7 @@ const outerTheme = createMuiTheme({
 const rows = [
     {
         name:"1",
+        user:"1",
         key1:1,
         key2:2,
         key3:3,
@@ -53,6 +54,7 @@ const rows = [
     },
     {
         name:"2",
+        user:"1",
         key1:1,
         key2:2,
         key3:3,
@@ -61,6 +63,7 @@ const rows = [
     },
     {
         name:"3",
+        user:"1",
         key1:1,
         key2:2,
         key3:3,
@@ -69,6 +72,7 @@ const rows = [
     },
     {
         name:"4",
+        user:"1",
         key1:1,
         key2:2,
         key3:3,
@@ -77,6 +81,7 @@ const rows = [
     },
     {
         name:"5",
+        user:"1",
         key1:1,
         key2:2,
         key3:3,
@@ -85,6 +90,7 @@ const rows = [
     },
     {
         name:"6",
+        user:"1",
         key1:1,
         key2:2,
         key3:3,
@@ -117,6 +123,7 @@ export default function Exceptions() {
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
+            <TableCell>User</TableCell>
               <TableCell>Role</TableCell>
               <TableCell align="right">Growth Drives</TableCell>
               <TableCell align="right">Price Metrics</TableCell>
@@ -129,12 +136,15 @@ export default function Exceptions() {
               <TableRow>
             <TableCell style={{borderBottom:"none"}}>
               <Link href="#" onClick={(e) => e.preventDefault()}>
-                +Add Role
+                +Add User
               </Link>
             </TableCell>
             </TableRow>
             {rows.map((row) => (
               <TableRow key={row.name}>
+                 <TableCell component="th" scope="row">
+                  {row.user}
+                </TableCell>
                 <TableCell component="th" scope="row">
                   {row.name}
                 </TableCell>
