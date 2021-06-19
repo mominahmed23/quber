@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
       },
       mainContent:{
         marginLeft: '240px',
-        padding: '20px',
+        padding: '20px 40px 20px 20px',
         marginBottom: '40px',
         flexGrow:1
       },
