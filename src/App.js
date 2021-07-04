@@ -1,12 +1,21 @@
 import "./App.css";
-import Dashboard from "./components/Dashboard";
-import Layout from "./components/Layout/index";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import Routes from "./routes/index";
+// import Routes from "./Routes";
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#084F92",
+    },
+  },
+});
 
 function App() {
   return (
-    <Layout>
-      <Dashboard />
-    </Layout>
+    <ThemeProvider theme={theme}>
+      <Routes />
+    </ThemeProvider>
   );
 }
 

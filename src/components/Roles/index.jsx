@@ -2,15 +2,13 @@ import React from "react";
 import Exceptions from "./Exceptions";
 import RolesAndPrivileges from "./RolesAndPrivileges";
 
-const Dashboard = () => {
+const Roles = () => {
   return (
-    <div>
-    
-        <RolesAndPrivileges/>
-        <Exceptions/>
-        
-    </div>
+    <>
+      <RolesAndPrivileges />
+      <Exceptions />
+    </>
   );
 };
 
-export default Dashboard;
+export default Roles;
