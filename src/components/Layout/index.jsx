@@ -6,24 +6,24 @@ import { CssBaseline } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-      },
-      mainContent:{
-        marginLeft: '240px',
-        padding: '20px 40px 20px 20px',
-        marginBottom: '40px',
-        flexGrow:1
-      },
-      drawerHeader: {
-        display: 'flex',
-        alignItems: 'center',
-        padding: theme.spacing(0, 1),
-        // necessary for content to be below app bar
-        ...theme.mixins.toolbar,
-        // justifyContent: 'flex-end',
-      },
-  }));
+  root: {
+    display: 'flex',
+  },
+  mainContent: {
+    marginLeft: '240px',
+    padding: '20px 40px 20px 20px',
+    marginBottom: '40px',
+    flexGrow: 1
+  },
+  drawerHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    padding: theme.spacing(0, 1),
+    // necessary for content to be below app bar
+    ...theme.mixins.toolbar,
+    // justifyContent: 'flex-end',
+  },
+}));
 
 const Layout = ({ children }) => {
   const classes = useStyles();
@@ -32,6 +32,7 @@ const Layout = ({ children }) => {
       <CssBaseline />
       <Header />
       <Sidebar />
+      
       <main className={classes.mainContent}>
         <div className={classes.drawerHeader} />
         {children}
