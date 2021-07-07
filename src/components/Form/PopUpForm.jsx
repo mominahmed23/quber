@@ -20,15 +20,23 @@ import { MenuItem } from '@material-ui/core';
 import { FormControlLabel } from '@material-ui/core';
 import { Checkbox } from '@material-ui/core';
 import { green } from '@material-ui/core/colors';
+import switchMap from './switchMap';
 function PopUpForm(props) {
  //const [openPopup,setOpenPopup]=props; 
  const theme = useTheme();
     var AdminArray=["Growth Driver","Price Metrics","Profit Analysis","MOney Makers","Loss Makers","Sales Team Performance"];
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  
+  {/** --------------------- to open/close pop up ------------ */}
   const [open, setOpen] = React.useState(false);
   const handleClickOpen = () => {
     setOpen(true);
   };
+  const handleClose = () => {
+    setOpen(false);
+  };
+  {/** --------------------------------- */}
+
   function arrayMap(){
     
     return (AdminArray.map((index) => {
@@ -45,19 +53,14 @@ function PopUpForm(props) {
     />
    }))
   }
-  const handleClose = () => {
-    setOpen(false);
-  };
+ 
+  {/** ---------------------- check box handles---------------- */}
   const [Role, setRole] = React.useState('');
-
   const handleChange = (event) => {
     setRole(event.target.value);
   };
   const [state, setState] = React.useState({
-    checkedA: true,
     checkedB: true,
-    checkedF: true,
-    checkedG: true,
   });
 
   const outerTheme = createMuiTheme({
@@ -70,11 +73,10 @@ function PopUpForm(props) {
   const handleChangeCheck = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
+
+  {/**-------------styles --------------------- */}
   const useStyles = makeStyles((theme) => ({
-    root:{
-    
-    },
-containerdiv: {
+    containerdiv: {
     position:'static',
     marginLeft:'10px',
     paddingLeft:'10px',
@@ -148,12 +150,11 @@ formControl: {
       margintop:'5px',
       marginBottom:'5px',
       marginRight:'5px',
-
       padding:'5px'
   }
 }));
 
-  const classes = useStyles();
+const classes = useStyles();
     return (
         <>
         <Button variant="outlined" color="primary" onClick={handleClickOpen}>
@@ -234,20 +235,10 @@ formControl: {
                 </Grid>
 
                 <Grid items sm={12}className={classes.checkBoxStyle}>
-                    
-               
-                {/* <FormControlLabel
-                //      control={ }
-                //      <Checkbox
-                //          checked={state.checkedB}
-                //          onChange={handleChangeCheck}
-                //          name="checkedB"
-                //          color="#021B97"
-                //      />
-                //      }
-                //  label={index}
-                //  />
-                 */}
+                   { AdminArray.map((item,key) =>
+                    <switchMap key={item} item={item} onClick={handleChangeCheck}/>)
+                }
+
                
                 </Grid>
                 <Grid items sm={12} className={classes.TextFieldStyle}>
