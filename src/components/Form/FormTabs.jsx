@@ -19,15 +19,14 @@ import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-
-
 const schema=yup.object().shape({
-  tanentName:yup.string().required(),
-  businessType:yup.string().required(),
-  city:yup.string().required(),
-  state:yup.string().required(),
-  address:yup.string().required(),
-  zipCode:yup.string().required()
+  tanentName:yup.string().required("Tanent Name is required"),
+  businessType:yup.string().required("Business Type is required"),
+  city:yup.string().required("City is required"),
+  state:yup.string().required("State is required"),
+  address:yup.string().required("Address is required"),
+  zipCode:yup.string().required("Postal Code is required"),
+  multiFactoryStatus:yup.string().required("At least one check box is required")
 });
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -108,6 +107,13 @@ FormContent:{
       width:'90%',
       margin:'10px',
   },
+  errorFieldStyle:{
+    width:'90%',
+    marginLeft:'10px',
+    marginTop:'1px',
+    color:'red',
+    fontsize:'10px',
+},
   addresfeild:{
     margin:'10px',
     width:'95%',
@@ -188,7 +194,10 @@ const handleSubmitForm=(event)=>{
     resolver:yupResolver(schema)
   });
   const onSubmit=(data)=>{
-    console.log(data);
+  const newRecord={...UserRegistration};
+  setRecords([...records,newRecord]);
+  console.log(records);
+  console.log(data);
   };
 return (
     
@@ -211,12 +220,12 @@ return (
             </Grid>
             
             <Grid items sm={6}>
-              <TextField className={classes.TextFieldStyle} id="outlined-basic" label="Tanent Name" variant="outlined" onChange={handleInput} value={UserRegistration.tanentName} {...register("tanentName",{required:"Name is required"})}/>
-              <p>{errors.tanentName?.message}</p>
+              <TextField className={classes.TextFieldStyle} id="outlined-basic" label="Tanent Name" variant="outlined" {...register('tanentName',{required:true})} value={UserRegistration.tanentName} onChange={handleInput}/>
+              <p className={classes.errorFieldStyle}>{errors.tanentName?.message}</p>
             </Grid>
             <Grid items sm={6}>
-              <TextField className={classes.TextFieldStyle} id="outlined-basic" label="Business Type" variant="outlined" onChange={handleInput} value={UserRegistration.businessType} {...register("businessType",{required:"Name is required"})}/>
-            <p>{errors.businessType?.message}</p>
+              <TextField className={classes.TextFieldStyle} id="outlined-basic" label="Business Type" variant="outlined"  {...register("businessType",{required:"Name is required"})} value={UserRegistration.businessType} onChange={handleInput}/>
+            <p className={classes.errorFieldStyle}>{errors.businessType?.message}</p>
             </Grid>
             {/* <Grid items sm={12}>
               <Typography variant="subtitle2" className={classes.TextFieldStyle}>
@@ -228,12 +237,12 @@ return (
                 <Typography variant="h6" className={classes.TextFieldStyle}>
                 is it a multi-factory
                 </Typography>
-                    <RadioGroup row aria-label="position" name="position" defaultValue="top" className={classes.TextFieldStyle} onChange={handleInput} name="multiFactoryStatus" {...register("businessType",{required:"Name is required"})}> 
+                    <RadioGroup row aria-label="position" name="position" defaultValue="top" className={classes.TextFieldStyle} {...register('multiFactoryStatus',{required:true})} value={UserRegistration.multiFactoryStatus} onChange={handleInput}> 
                         <FormControlLabel value="Yes" control={<Radio color="primary" />} label="Yes" />
                         <FormControlLabel value="No" control={<Radio color="primary" />} label="No" />
                     </RadioGroup>
                 </FormControl>
-                <p>{errors.multiFactoryStatus?.message}</p>
+                <p className={classes.errorFieldStyle}>{errors.multiFactoryStatus?.message}</p>
               {/* <Button variant="outlined" color="primary" className={classes.buttonStyle} onClick={handlebuttonChange}>
                 Yes
               </Button>  
@@ -249,20 +258,20 @@ return (
               </Typography>
             </Grid>
             <Grid items sm={6}>
-              <TextField className={classes.TextFieldStyle} id="outlined-basic" label="City" variant="outlined" onChange={handleInput} value={UserRegistration.city} name="city" />
-              <p>{errors.city?.message}</p>
+              <TextField className={classes.TextFieldStyle} id="outlined-basic" label="City" variant="outlined"  {...register('city',{required:true})} value={UserRegistration.city} onChange={handleInput}/>
+              <p className={classes.errorFieldStyle}>{errors.city?.message}</p>
             </Grid>
             <Grid items sm={6}>
-              <TextField className={classes.TextFieldStyle} id="outlined-basic" label="State" variant="outlined" onChange={handleInput} value={UserRegistration.state} name="state" />
-              <p>{errors.state?.message}</p>
+              <TextField className={classes.TextFieldStyle} id="outlined-basic" label="State" variant="outlined" {...register('state',{required:true})} value={UserRegistration.state} onChange={handleInput}/>
+              <p className={classes.errorFieldStyle}>{errors.state?.message}</p>
             </Grid>
             <Grid items sm={12}>
-              <TextField className={classes.addresfeild} id="outlined-basic" label="Address" variant="outlined" onChange={handleInput} value={UserRegistration.address} name="address"/>
-              <p>{errors.address?.message}</p>
+              <TextField className={classes.addresfeild} id="outlined-basic" label="Address" variant="outlined"  {...register('address',{required:true})} value={UserRegistration.address} onChange={handleInput}/>
+              <p className={classes.errorFieldStyle}>{errors.address?.message}</p>
             </Grid>
             <Grid items sm={6}>
-              <TextField className={classes.TextFieldStyle} id="outlined-basic" label="Zip" variant="outlined" onChange={handleInput} value={UserRegistration.zipCode} name="zipCode"/>
-              <p>{errors.zipCode?.message}</p>
+              <TextField className={classes.TextFieldStyle} id="outlined-basic" label="Zip" variant="outlined"  {...register('zipCode',{required:true})} value={UserRegistration.zipCode} onChange={handleInput}/>
+              <p className={classes.errorFieldStyle}>{errors.zipCode?.message}</p>
             </Grid>
             
             <Grid container className={classes.TextFieldStyle} sm={6}>
